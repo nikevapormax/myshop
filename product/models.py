@@ -11,6 +11,16 @@ class Category(models.Model):
         return self.category_name
 
 
+class OrderStatus(models.Model):
+    status_name = models.CharField(max_length=20)
+    
+    class Meta:
+        db_table = "order_statuses"
+        
+    def __str__(self):
+        return self.status_name
+
+
 class Product(models.Model):
     product_name = models.CharField(max_length=100)
     category_name = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
